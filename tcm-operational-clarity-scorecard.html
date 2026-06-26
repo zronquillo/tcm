@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Curious Mindset, Operational Clarity Scorecard</title>
+<meta name="description" content="A 90-second diagnostic for technology leaders. Surface the operational pressure-point quietly shaping your week, and the one move that resets it.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0A1F14;          /* TCM banner near-black green */
+    --ink-soft: #1B3324;
+    --bright: #A3E635;       /* TCM accent lime */
+    --bright-soft: #C7F25C;
+    --bright-dim: #5A8B1C;
+    --cream: #F5F3EB;
+    --bone: #FAFAF7;
+    --line: #D9D5C7;
+    --text: #14201A;
+    --muted: #6B7669;
+    --danger: #B14B3A;
+    --white: #FFFFFF;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--text);
+    background: var(--bone);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  .serif { font-family: 'Fraunces', Georgia, serif; }
+  .container { max-width: 920px; margin: 0 auto; padding: 0 24px; }
+
+  /* ===== NAV ===== */
+  .nav {
+    background: var(--ink);
+    color: var(--white);
+    padding: 18px 0;
+    border-bottom: 1px solid rgba(163,230,53,0.18);
+  }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; }
+  .logo-row { display: flex; align-items: center; gap: 14px; }
+  .logo-mark {
+    width: 38px; height: 38px;
+    background: #000;
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+    font-family: 'Fraunces', serif;
+    color: #fff;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1;
+  }
+  .logo-mark::after {
+    content: '';
+    position: absolute;
+    width: 7px; height: 7px;
+    background: var(--bright);
+    border-radius: 50%;
+    bottom: 8px; right: 8px;
+  }
+  .logo-text { font-size: 14px; font-weight: 600; letter-spacing: 0.5px; }
+  .logo-text .tcm { color: var(--white); }
+  .logo-text .by { color: rgba(255,255,255,0.5); font-weight: 400; font-size: 12px; }
+  .nav-tag {
+    color: var(--bright);
+    font-size: 12px;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    background: var(--ink);
+    color: var(--white);
+    padding: 70px 0 90px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -120px; right: -120px;
+    width: 360px; height: 360px;
+    background: radial-gradient(circle, rgba(163,230,53,0.18) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-eyebrow {
+    color: var(--bright);
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+  .hero h1 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(36px, 5.5vw, 56px);
+    font-weight: 600;
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    margin-bottom: 24px;
+    max-width: 760px;
+  }
+  .hero h1 .accent { color: var(--bright); font-style: italic; }
+  .hero-sub {
+    font-size: 19px;
+    color: rgba(255,255,255,0.78);
+    max-width: 620px;
+    margin-bottom: 36px;
+    line-height: 1.55;
+  }
+  .hero-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 28px;
+    padding-top: 28px;
+    border-top: 1px solid rgba(255,255,255,0.12);
+    max-width: 620px;
+  }
+  .meta-item { display: flex; align-items: center; gap: 10px; }
+  .meta-dot {
+    width: 8px; height: 8px;
+    background: var(--bright);
+    border-radius: 50%;
+  }
+  .meta-item span { font-size: 13px; color: rgba(255,255,255,0.7); letter-spacing: 0.3px; }
+
+  /* ===== PREMISE ===== */
+  .premise {
+    background: var(--cream);
+    padding: 60px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .premise-quote {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(22px, 3vw, 28px);
+    font-weight: 500;
+    color: var(--ink);
+    line-height: 1.45;
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: center;
+    font-style: italic;
+  }
+  .premise-quote::before, .premise-quote::after { content: '“'; color: var(--bright-dim); }
+  .premise-quote::after { content: '”'; }
+  .premise-attrib {
+    text-align: center;
+    margin-top: 18px;
+    color: var(--muted);
+    font-size: 13px;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  /* ===== SCORECARD ===== */
+  .scorecard {
+    padding: 80px 0;
+    background: var(--bone);
+  }
+  .scorecard-intro {
+    text-align: center;
+    max-width: 640px;
+    margin: 0 auto 56px;
+  }
+  .section-eyebrow {
+    color: var(--bright-dim);
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 14px;
+  }
+  .scorecard-intro h2 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(28px, 4vw, 40px);
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    margin-bottom: 18px;
+  }
+  .scorecard-intro p {
+    color: var(--muted);
+    font-size: 17px;
+    line-height: 1.65;
+  }
+
+  /* Progress */
+  .progress-wrap {
+    max-width: 720px;
+    margin: 0 auto 36px;
+  }
+  .progress-row {
+    display: flex; justify-content: space-between;
+    font-size: 12px; color: var(--muted);
+    letter-spacing: 1px; text-transform: uppercase;
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+  .progress-bar {
+    height: 4px;
+    background: var(--line);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    background: var(--bright);
+    width: 12.5%;
+    transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  /* Question card */
+  .q-card {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 40px;
+    max-width: 720px;
+    margin: 0 auto;
+    box-shadow: 0 4px 24px rgba(10, 31, 20, 0.04);
+    display: none;
+  }
+  .q-card.active { display: block; }
+  .q-num {
+    color: var(--bright-dim);
+    font-size: 13px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+  .q-text {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(22px, 2.8vw, 26px);
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.3;
+    margin-bottom: 28px;
+    letter-spacing: -0.01em;
+  }
+  .q-options { display: flex; flex-direction: column; gap: 10px; }
+  .opt {
+    border: 1.5px solid var(--line);
+    background: var(--white);
+    border-radius: 10px;
+    padding: 16px 20px;
+    cursor: pointer;
+    transition: all 0.18s ease;
+    font-family: inherit;
+    font-size: 15px;
+    color: var(--text);
+    text-align: left;
+    line-height: 1.45;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .opt:hover {
+    border-color: var(--bright-dim);
+    background: rgba(163,230,53,0.05);
+    transform: translateX(2px);
+  }
+  .opt.selected {
+    border-color: var(--ink);
+    background: var(--ink);
+    color: var(--white);
+  }
+  .opt-dot {
+    width: 16px; height: 16px;
+    border: 1.5px solid var(--line);
+    border-radius: 50%;
+    flex-shrink: 0;
+    background: var(--white);
+    position: relative;
+  }
+  .opt.selected .opt-dot {
+    border-color: var(--bright);
+    background: var(--bright);
+  }
+  .opt.selected .opt-dot::after {
+    content: '';
+    position: absolute;
+    inset: 3px;
+    background: var(--ink);
+    border-radius: 50%;
+  }
+
+  .q-nav {
+    display: flex; justify-content: space-between;
+    margin-top: 28px;
+    padding-top: 24px;
+    border-top: 1px solid var(--line);
+  }
+  .btn {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    padding: 12px 24px;
+    border-radius: 8px;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s ease;
+  }
+  .btn-ghost {
+    background: transparent;
+    color: var(--muted);
+  }
+  .btn-ghost:hover { color: var(--ink); }
+  .btn-primary {
+    background: var(--ink);
+    color: var(--white);
+    padding: 12px 28px;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .btn-primary:hover { background: var(--ink-soft); transform: translateY(-1px); }
+  .btn-primary:disabled { opacity: 0.4; cursor: not-allowed; }
+  .btn-bright {
+    background: var(--bright);
+    color: var(--ink);
+    padding: 14px 32px;
+    font-weight: 700;
+  }
+  .btn-bright:hover { background: var(--bright-soft); transform: translateY(-1px); }
+
+  /* ===== EMAIL GATE ===== */
+  .gate {
+    display: none;
+    background: var(--ink);
+    color: var(--white);
+    padding: 80px 0;
+  }
+  .gate.active { display: block; }
+  .gate-inner {
+    max-width: 560px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .gate-eyebrow {
+    color: var(--bright);
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+  .gate h2 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(28px, 4vw, 38px);
+    font-weight: 600;
+    line-height: 1.2;
+    margin-bottom: 20px;
+    letter-spacing: -0.01em;
+  }
+  .gate p {
+    color: rgba(255,255,255,0.75);
+    font-size: 16px;
+    margin-bottom: 32px;
+    line-height: 1.6;
+  }
+  .gate-form { display: flex; flex-direction: column; gap: 12px; }
+  .input-row { display: flex; gap: 10px; flex-wrap: wrap; }
+  .input {
+    flex: 1;
+    min-width: 200px;
+    padding: 14px 18px;
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.18);
+    background: rgba(255,255,255,0.04);
+    color: var(--white);
+    font-family: inherit;
+    font-size: 15px;
+  }
+  .input::placeholder { color: rgba(255,255,255,0.4); }
+  .input:focus { outline: none; border-color: var(--bright); background: rgba(255,255,255,0.08); }
+  .gate-fine {
+    margin-top: 16px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.3px;
+  }
+
+  /* ===== RESULT ===== */
+  .result {
+    display: none;
+    padding: 80px 0;
+    background: var(--cream);
+  }
+  .result.active { display: block; }
+  .result-inner { max-width: 760px; margin: 0 auto; }
+  .result-eyebrow {
+    text-align: center;
+    color: var(--bright-dim);
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 14px;
+  }
+  .result-title {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(28px, 4vw, 42px);
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.15;
+    text-align: center;
+    margin-bottom: 12px;
+    letter-spacing: -0.01em;
+  }
+  .result-name {
+    font-style: italic;
+    color: var(--bright-dim);
+  }
+  .result-sub {
+    text-align: center;
+    color: var(--muted);
+    font-size: 16px;
+    margin-bottom: 48px;
+    max-width: 560px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .result-card {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 44px;
+    margin-bottom: 28px;
+    box-shadow: 0 6px 32px rgba(10, 31, 20, 0.05);
+  }
+  .result-card h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    color: var(--ink);
+    margin-bottom: 14px;
+    font-weight: 600;
+  }
+  .result-card p { color: var(--text); font-size: 16px; line-height: 1.65; margin-bottom: 12px; }
+  .recs { list-style: none; padding: 0; margin-top: 18px; }
+  .recs li {
+    display: flex;
+    gap: 16px;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--line);
+    align-items: flex-start;
+  }
+  .recs li:last-child { border-bottom: none; }
+  .rec-num {
+    width: 30px; height: 30px;
+    background: var(--ink);
+    color: var(--bright);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700;
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+  .rec-body strong { color: var(--ink); font-weight: 600; display: block; margin-bottom: 4px; }
+  .rec-body span { color: var(--muted); font-size: 14px; line-height: 1.5; }
+
+  .session-card {
+    background: var(--ink);
+    color: var(--white);
+    border-radius: 14px;
+    padding: 36px;
+    margin-bottom: 28px;
+    position: relative;
+    overflow: hidden;
+  }
+  .session-card::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 180px; height: 180px;
+    background: radial-gradient(circle, rgba(163,230,53,0.2) 0%, transparent 70%);
+  }
+  .session-eyebrow {
+    color: var(--bright);
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+  .session-title {
+    font-family: 'Fraunces', serif;
+    font-size: 26px;
+    line-height: 1.2;
+    margin-bottom: 12px;
+    font-weight: 600;
+  }
+  .session-desc {
+    color: rgba(255,255,255,0.78);
+    font-size: 15px;
+    margin-bottom: 24px;
+    line-height: 1.6;
+  }
+  .session-cta { display: inline-flex; align-items: center; gap: 8px; }
+
+  .closing {
+    text-align: center;
+    padding: 40px 0 20px;
+    color: var(--muted);
+    font-size: 14px;
+    font-style: italic;
+  }
+
+  /* ===== FOOTER ===== */
+  .footer {
+    background: var(--ink);
+    color: rgba(255,255,255,0.5);
+    padding: 40px 0;
+    text-align: center;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+  }
+  .footer a { color: var(--bright); text-decoration: none; }
+  .footer-row { display: flex; justify-content: center; gap: 24px; margin-top: 14px; }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 640px) {
+    .hero { padding: 50px 0 60px; }
+    .q-card { padding: 28px 22px; }
+    .result-card { padding: 28px 22px; }
+    .session-card { padding: 28px 22px; }
+    .premise-quote { font-size: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<nav class="nav">
+  <div class="container nav-inner">
+    <div class="logo-row">
+      <div class="logo-mark">?</div>
+      <div class="logo-text">
+        <div class="tcm">The Curious Mindset</div>
+        <div class="by">powered by 64TEQ</div>
+      </div>
+    </div>
+    <div class="nav-tag">Operational Clarity Scorecard</div>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-eyebrow">A diagnostic for technology leaders</div>
+    <h1>The pressure-point quietly shaping your week, <span class="accent serif">named in 90 seconds.</span></h1>
+    <p class="hero-sub">Eight questions. No platitudes. At the end, the operational pattern you’re sitting in, the one move that resets it, and the single Curious Mindset session built for that pattern.</p>
+    <div class="hero-meta">
+      <div class="meta-item"><div class="meta-dot"></div><span>8 questions · 90 seconds</span></div>
+      <div class="meta-item"><div class="meta-dot"></div><span>Built for CTOs, CIOs, CXOs, IT Directors</span></div>
+      <div class="meta-item"><div class="meta-dot"></div><span>No sales follow-up</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PREMISE ===== -->
+<section class="premise">
+  <div class="container">
+    <p class="premise-quote">Truth be told, we don’t accept everyone. The scorecard is how we both find out if this is your room.</p>
+    <p class="premise-attrib">, The Curious Mindset</p>
+  </div>
+</section>
+
+<!-- ===== SCORECARD ===== -->
+<section class="scorecard" id="scorecard">
+  <div class="container">
+    <div class="scorecard-intro">
+      <div class="section-eyebrow">Begin</div>
+      <h2>Pick the answer that lands closest. Trust your first instinct.</h2>
+      <p>There are no right answers. There are five patterns we keep seeing across 2,750 technology leaders, and you’re sitting in one of them right now.</p>
+    </div>
+
+    <div class="progress-wrap">
+      <div class="progress-row">
+        <span id="progressLabel">Question 1 of 8</span>
+        <span id="progressPct">12%</span>
+      </div>
+      <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+    </div>
+
+    <div id="questionContainer"></div>
+  </div>
+</section>
+
+<!-- ===== EMAIL GATE ===== -->
+<section class="gate" id="gate">
+  <div class="container gate-inner">
+    <div class="gate-eyebrow">One step before your reveal</div>
+    <h2>Where should we send your scorecard summary?</h2>
+    <p>We’ll email your pressure-point read and the session match. Nothing else, no automated drip, no sales follow-up.</p>
+    <form class="gate-form" id="gateForm">
+      <input class="input" type="text" id="fName" placeholder="First name" required>
+      <div class="input-row">
+        <input class="input" type="email" id="fEmail" placeholder="Work email" required>
+        <input class="input" type="text" id="fRole" placeholder="Role (e.g., CTO)" required>
+      </div>
+      <button type="submit" class="btn btn-bright" style="margin-top: 8px;">Reveal my pressure-point →</button>
+    </form>
+    <p class="gate-fine">By submitting, you agree to receive your scorecard summary by email. We do not share your data.</p>
+  </div>
+</section>
+
+<!-- ===== RESULT ===== -->
+<section class="result" id="result">
+  <div class="container result-inner">
+    <div class="result-eyebrow">Your scorecard read</div>
+    <h1 class="result-title">You’re sitting in <span class="result-name serif" id="resultName">,</span></h1>
+    <p class="result-sub" id="resultSub"></p>
+
+    <div class="result-card">
+      <h3>What this pattern looks like</h3>
+      <p id="resultDesc"></p>
+    </div>
+
+    <div class="result-card">
+      <h3>The three moves that reset it</h3>
+      <ul class="recs" id="resultRecs"></ul>
+    </div>
+
+    <div class="session-card">
+      <div class="session-eyebrow">Your session match</div>
+      <div class="session-title serif" id="sessionTitle"></div>
+      <p class="session-desc" id="sessionDesc"></p>
+      <a href="https://thecuriousmindset.com" class="btn btn-bright session-cta" target="_blank" rel="noopener">Hold a seat →</a>
+    </div>
+
+    <p class="closing">Curious to start.</p>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="container">
+    <div>The Curious Mindset · powered by 64TEQ · London</div>
+    <div class="footer-row">
+      <span>People Focused</span><span>·</span><span>Technology Driven</span><span>·</span><span>Community Led</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ===== QUESTION DATA =====
+// Each option maps to a pressure-point: R (Reactive), A (Alignment), T (Talent), B (Board), X (Transformation)
+const QUESTIONS = [
+  {
+    q: "Most weeks, your calendar looks like ,",
+    options: [
+      { t: "Back-to-back firefighting, then I steal time for strategy at 9pm.", v: "R" },
+      { t: "Endless alignment meetings that don’t actually align anything.", v: "A" },
+      { t: "1:1s with people I’m worried about losing.", v: "T" },
+      { t: "Prep for the next board / leadership update.", v: "B" },
+      { t: "Programme reviews for the transformation we’re mid-flight on.", v: "X" }
+    ]
+  },
+  {
+    q: "When something breaks, the team ,",
+    options: [
+      { t: "Pings me directly. I’m the escalation path.", v: "R" },
+      { t: "Knows what to do, but waits to confirm the call with three other functions.", v: "A" },
+      { t: "Quietly fixes it. I worry they’ll burn out doing it.", v: "T" },
+      { t: "Surfaces it through the wrong reporting line.", v: "B" },
+      { t: "Doesn’t know which roadmap it belongs to anymore.", v: "X" }
+    ]
+  },
+  {
+    q: "The board / exec ask that lands hardest right now is ,",
+    options: [
+      { t: "“Why didn’t we see this coming?”", v: "R" },
+      { t: "“Are we and [other function] actually on the same plan?”", v: "A" },
+      { t: "“How are we holding the team through this?”", v: "T" },
+      { t: "“Can you walk us through the numbers again?”", v: "B" },
+      { t: "“Where are we on the transformation, really?”", v: "X" }
+    ]
+  },
+  {
+    q: "The conversation you’re quietly avoiding is ,",
+    options: [
+      { t: "The post-mortem that names what we should have caught.", v: "R" },
+      { t: "The cross-functional one about who actually owns this.", v: "A" },
+      { t: "The retention talk with the person I can’t lose.", v: "T" },
+      { t: "The honest reforecast for the board.", v: "B" },
+      { t: "The one where we admit the original transformation scope was wrong.", v: "X" }
+    ]
+  },
+  {
+    q: "If you had two clear hours tomorrow, you would ,",
+    options: [
+      { t: "Get ahead of the next likely fire.", v: "R" },
+      { t: "Walk a peer through what we’re actually trying to do.", v: "A" },
+      { t: "Have a real career conversation with one person.", v: "T" },
+      { t: "Rebuild the dashboard so the story tells itself.", v: "B" },
+      { t: "Re-draw the transformation roadmap on one page.", v: "X" }
+    ]
+  },
+  {
+    q: "The thing that keeps you up at 2am is ,",
+    options: [
+      { t: "What we missed today that’ll surface tomorrow.", v: "R" },
+      { t: "How many things we said yes to that don’t belong on the same plan.", v: "A" },
+      { t: "Who’s about to hand in notice.", v: "T" },
+      { t: "Whether the numbers I just sent up actually hold.", v: "B" },
+      { t: "Whether this transformation will land, or quietly stall.", v: "X" }
+    ]
+  },
+  {
+    q: "If you walked away from your role for a month, what would break first?",
+    options: [
+      { t: "The incident response chain.", v: "R" },
+      { t: "Decisions that need cross-functional sign-off.", v: "A" },
+      { t: "Team morale.", v: "T" },
+      { t: "The upward reporting cadence.", v: "B" },
+      { t: "The transformation programme’s direction.", v: "X" }
+    ]
+  },
+  {
+    q: "The honest version of how you feel right now is ,",
+    options: [
+      { t: "Tired. Reactive. I haven’t had a real strategic week in months.", v: "R" },
+      { t: "Frustrated. I keep aligning the same room and it un-aligns by Friday.", v: "A" },
+      { t: "Anxious. The people I rely on look exhausted.", v: "T" },
+      { t: "Exposed. The reporting layer is a story I’m not sure I believe.", v: "B" },
+      { t: "Stuck. The transformation is too big to stop and not yet working.", v: "X" }
+    ]
+  }
+];
+
+// ===== PRESSURE-POINT PROFILES =====
+const PROFILES = {
+  R: {
+    name: "Reactive Firefighting",
+    sub: "Your week is being authored by interruptions. The strategy seat is empty most days, and you’re the only one who can fill it.",
+    desc: "Reactive Firefighting is the most common pattern we see in technology leaders aged 18+ months into a role. The team has learned to escalate to you because escalating to you works. Every fire gets resolved. The cost is invisible: the strategic decisions that don’t get made, the second-order risks that don’t get spotted, and the version of you that doesn’t get rested. This pattern is not a personal failure. It is an organisational design problem wearing a personal-failure costume.",
+    recs: [
+      { h: "Name the top three escalation paths that bypass your deputies.", b: "If your team can’t name them, that’s the diagnosis. Write them on a single page." },
+      { h: "Run a 30-day ‘escalation deflection’ trial with one trusted lieutenant.", b: "Half the fires never needed you. The other half teach your bench how to grow." },
+      { h: "Protect two non-negotiable strategy blocks per week.", b: "On the calendar, defended like a board meeting. This is how the strategy seat gets reoccupied." }
+    ],
+    session: {
+      title: "Managing The Leadership Madness",
+      desc: "Liane Davey (NYT bestselling author of The Good Fight and You First; co-founder, 3COze Inc.) on the operational habits that pull technology leaders out of the firefighting loop, without breaking the team that depends on you."
+    }
+  },
+  A: {
+    name: "Alignment Debt",
+    sub: "You keep aligning the same room and it un-aligns by Friday. The work is being done, but not in formation.",
+    desc: "Alignment Debt accumulates when an organisation grows faster than its decision-rights infrastructure. Each function makes locally rational choices that compound into globally irrational ones. You spend disproportionate time re-aligning meetings that should have stayed aligned. The technical work is rarely the problem; the connective tissue between functions is. Until decision-rights are explicit and durable, alignment will be a recurring tax, not a one-time event.",
+    recs: [
+      { h: "Map the five most-contested decisions of the last quarter.", b: "Who actually owned each? If the answer is fuzzy, you’ve found your alignment debt." },
+      { h: "Publish a one-page decision-rights matrix this month.", b: "Not RACI. Just: who decides, who must be consulted, who is informed. Three columns." },
+      { h: "Move recurring alignment meetings to async written updates with one decision per meeting.", b: "Synchronous time should be used to resolve disagreement, not surface it." }
+    ],
+    session: {
+      title: "Creating Coherence: The Next Chapter of GLUE",
+      desc: "John Dore on the work of holding strategy, structure, and people in coherent formation when the easy path is to align loudly and stay fragmented quietly."
+    }
+  },
+  T: {
+    name: "Talent Retention Pressure",
+    sub: "You’re carrying the weight of who might leave. The team performs because of them, and you can feel it.",
+    desc: "Talent Retention Pressure shows up when one or two people have become load-bearing. You can name them. You think about them in the shower. The team’s output depends on their continuity, and the system you’ve built has not yet developed the redundancy to lose them gracefully. This is rarely solved by compensation alone. It is solved by giving load-bearing people the one thing they actually want, which is almost never what their last review form asked about.",
+    recs: [
+      { h: "Have one stay-conversation in the next 14 days, not a 1:1, a stay-conversation.", b: "The only question that matters: ‘If you were going to leave in the next 12 months, what would be the reason?’ Ask it. Listen." },
+      { h: "Build a two-deep map for every load-bearing role.", b: "If a role has only one person who can do it, you don’t have a role, you have a single point of failure." },
+      { h: "Identify one project that lets a load-bearing person grow without leaving.", b: "The path most people take to a new company is the path you didn’t offer them in this one." }
+    ],
+    session: {
+      title: "Kindness as a Superpower",
+      desc: "Graham Allcott on the leadership posture that retains the people who could go anywhere, without sacrificing the standard that made them choose you in the first place."
+    }
+  },
+  B: {
+    name: "Board-Reporting Fatigue",
+    sub: "You’re managing two truths in parallel, the operational one, and the one the board sees. The gap between them is doing the work.",
+    desc: "Board-Reporting Fatigue is what happens when the upward narrative and the operational reality drift apart faster than you can reconcile them. Every reporting cycle becomes a translation exercise, taking what is true on the ground and converting it into a story the board can act on. Over time, the translation gets harder, the numbers get more rehearsed, and the gap between confidence and certainty widens. The fix is rarely a better dashboard. It is a shorter feedback loop between the two truths.",
+    recs: [
+      { h: "Cut your board pack in half. Then in half again.", b: "If a slide doesn’t change a decision, it’s not communication, it’s decoration." },
+      { h: "Pre-brief one board member before each meeting.", b: "Surprise in the room is a signal of upstream failure, not downstream skill." },
+      { h: "Define the three metrics you’d resign over.", b: "If you don’t know them, the board can’t trust the ones you’re showing." }
+    ],
+    session: {
+      title: "The Twelve Table",
+      desc: "The Curious Mindset’s small-table peer roundtable for technology leaders who want to pressure-test the upward narrative with peers who’ve sat in the same chair."
+    }
+  },
+  X: {
+    name: "Transformation Overwhelm",
+    sub: "The transformation is too big to stop and not yet working. You are carrying it alone in your head.",
+    desc: "Transformation Overwhelm sets in around the 9–18 month mark of a multi-year programme. The original case for change is now harder to remember, the early wins have faded, and the next milestone is still distant. You can see the shape of the destination, but you cannot reliably see this quarter. Most leaders in this pattern do not need a new plan. They need a re-articulation of the plan that already exists, in language the next twelve weeks can act on.",
+    recs: [
+      { h: "Re-draw the transformation on a single page this week.", b: "If you cannot, the plan has fragmented faster than you’ve noticed. The team will have noticed first." },
+      { h: "Identify the next 90-day visible win.", b: "Multi-year transformations stall in the gap between milestones. Manufacture the next one." },
+      { h: "Find one peer who has finished the transformation you’re in the middle of.", b: "Not a consultant. A peer. The Curious Mindset’s 2,750-leader network exists for exactly this." }
+    ],
+    session: {
+      title: "Thoughtload: Managing The Leadership Madness",
+      desc: "A masterclass on holding transformation programmes coherent when the work has outgrown the original plan, and on the leadership posture that carries teams through the long middle."
+    }
+  }
+};
+
+// ===== STATE =====
+let answers = [];
+let currentQ = 0;
+
+// ===== RENDER =====
+function renderQuestion() {
+  const c = document.getElementById('questionContainer');
+  const q = QUESTIONS[currentQ];
+  const selectedV = answers[currentQ];
+
+  c.innerHTML = `
+    <div class="q-card active">
+      <div class="q-num">Question ${currentQ + 1}</div>
+      <div class="q-text serif">${q.q}</div>
+      <div class="q-options">
+        ${q.options.map((o, i) => `
+          <button class="opt ${selectedV === o.v ? 'selected' : ''}" data-v="${o.v}" data-i="${i}">
+            <span class="opt-dot"></span>
+            <span>${o.t}</span>
+          </button>
+        `).join('')}
+      </div>
+      <div class="q-nav">
+        <button class="btn btn-ghost" id="backBtn" ${currentQ === 0 ? 'style="visibility:hidden"' : ''}>← Back</button>
+        <button class="btn btn-primary" id="nextBtn" ${!selectedV ? 'disabled' : ''}>
+          ${currentQ === QUESTIONS.length - 1 ? 'See my pressure-point' : 'Next'} →
+        </button>
+      </div>
+    </div>
+  `;
+
+  // Bind option clicks
+  c.querySelectorAll('.opt').forEach(btn => {
+    btn.addEventListener('click', () => {
+      answers[currentQ] = btn.dataset.v;
+      renderQuestion();
+    });
+  });
+
+  document.getElementById('backBtn')?.addEventListener('click', () => {
+    if (currentQ > 0) { currentQ--; renderQuestion(); updateProgress(); }
+  });
+  document.getElementById('nextBtn')?.addEventListener('click', () => {
+    if (!answers[currentQ]) return;
+    if (currentQ < QUESTIONS.length - 1) {
+      currentQ++; renderQuestion(); updateProgress();
+      document.getElementById('scorecard').scrollIntoView({behavior:'smooth', block:'start'});
+    } else {
+      showGate();
+    }
+  });
+}
+
+function updateProgress() {
+  const pct = Math.round(((currentQ + 1) / QUESTIONS.length) * 100);
+  document.getElementById('progressFill').style.width = pct + '%';
+  document.getElementById('progressLabel').textContent = `Question ${currentQ + 1} of ${QUESTIONS.length}`;
+  document.getElementById('progressPct').textContent = pct + '%';
+}
+
+function showGate() {
+  document.getElementById('scorecard').style.display = 'none';
+  document.getElementById('gate').classList.add('active');
+  document.getElementById('gate').scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+function computeDominantProfile() {
+  const tally = { R: 0, A: 0, T: 0, B: 0, X: 0 };
+  answers.forEach(v => { if (v && tally[v] !== undefined) tally[v]++; });
+  let max = -1, dominant = 'R';
+  for (const k in tally) if (tally[k] > max) { max = tally[k]; dominant = k; }
+  return dominant;
+}
+
+function showResult() {
+  const key = computeDominantProfile();
+  const p = PROFILES[key];
+
+  document.getElementById('resultName').textContent = p.name;
+  document.getElementById('resultSub').textContent = p.sub;
+  document.getElementById('resultDesc').textContent = p.desc;
+  document.getElementById('resultRecs').innerHTML = p.recs.map((r, i) => `
+    <li>
+      <div class="rec-num">${i + 1}</div>
+      <div class="rec-body">
+        <strong>${r.h}</strong>
+        <span>${r.b}</span>
+      </div>
+    </li>
+  `).join('');
+  document.getElementById('sessionTitle').textContent = p.session.title;
+  document.getElementById('sessionDesc').textContent = p.session.desc;
+
+  document.getElementById('gate').classList.remove('active');
+  document.getElementById('result').classList.add('active');
+  document.getElementById('result').scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+// ===== INIT =====
+document.getElementById('gateForm').addEventListener('submit', (e) => {
+  e.preventDefault();
+  // In production: POST to HighLevel webhook / Formspree
+  // For now: localStorage capture for demo
+  const lead = {
+    name: document.getElementById('fName').value,
+    email: document.getElementById('fEmail').value,
+    role: document.getElementById('fRole').value,
+    profile: computeDominantProfile(),
+    timestamp: new Date().toISOString()
+  };
+  console.log('Lead captured:', lead);
+  showResult();
+});
+
+renderQuestion();
+updateProgress();
+</script>
+
+</body>
+</html>
